@@ -1,0 +1,85 @@
+{
+	"mon": [
+		{
+			"name": "Dororo",
+			"max-episode": 24,
+			"current-episode": 23,
+			"download-base-link": "https://vidstreaming.io/download?id=MTE3NTYx&typesub=Gogoanime-SUB&title=Dororo+Episode+XXX",
+			"status": "NOT_DONE"
+		},
+		{
+			"name": "Shingeki-no-Kyojin-Season-3-part-2",
+			"max-episode": 10,
+			"current-episode": 9,
+			"download-base-link": "https://vidstreaming.io/download?id=MTE3MzQ5&typesub=Gogoanime-SUB&title=Shingeki+no+Kyojin+Season+3+Part+2+Episode+XXX",
+			"status": "DONE"
+		}
+	],
+	"tue": [
+		{
+			"name": "Black-clover",
+			"max-episode": 10000,
+			"current-episode": 88,
+			"download-base-link": "https://vidstreaming.io/download?id=MTE3NjA1&typesub=Gogoanime-SUB&title=Black+Clover+%28TV%29+Episode+XXX",
+			"status": "DONE"
+		},
+		{
+			"name": "Running-man",
+			"max-episode": 10000,
+			"current-episode": 457,
+			"download-base-link": "http://kshow123.net/show/running-man/episode-XXX.html",
+			"status": "DONE"
+		}
+	],
+	"wed": [
+		{
+			"name": "One-punch-man",
+			"max-episode": 12,
+			"current-episode": 10,
+			"download-base-link": "https://vidstreaming.io/download?id=MTE3NjEx&typesub=Gogoanime-SUB&title=One+Punch+Man+2nd+Season+Episode+XXX",
+			"status": "DONE"
+		}
+	],
+	"thu": [
+		{
+			"name": "Tate-no-Yuusha-no-Nariagari",
+			"max-episode": 25,
+			"current-episode": 24,
+			"download-base-link": "https://vidstreaming.io/download?id=MTE3NjYx&typesub=Gogoanime-SUB&title=Tate+no+Yuusha+no+Nariagari+Episode+XXX",
+			"status": "DONE"
+		}
+	],
+	"fri": [
+		{
+			"name": "Karakuri-Circus",
+			"max-episode": 36,
+			"current-episode": 35,
+			"download-base-link": "https://vidstreaming.io/download?id=MTE4MDQy&typesub=Gogoanime-SUB&title=Karakuri+Circus+Episode+XXX",
+			"status": "DONE"
+		}
+	],
+	"sat": [],
+	"sun": [
+		{
+			"name": "One-piece",
+			"max-episode": 10000,
+			"current-episode": 890,
+			"download-base-link": "https://vidstreaming.io/download?id=MTE4MzA2&typesub=Gogoanime-SUB&title=One+Piece+Episode+XXX",
+			"status": "DONE"
+		},
+		{
+			"name": "Fairy-tail",
+			"max-episode": 51,
+			"current-episode": 37,
+			"download-base-link": "https://vidstreaming.io/download?id=MTE4MzAz&typesub=Gogoanime-SUB&title=Fairy+Tail%3A+Final+Series+Episode+XXX",
+			"status": "DONE"
+		},
+		{
+			"name": "Kimetsu-no-Yaiba",
+			"max-episode": 26,
+			"current-episode": 12,
+			"download-base-link": "https://vidstreaming.io/download?id=MTE3NDQx&typesub=Gogoanime-SUB&title=Kimetsu+no+Yaiba+Episode+XXX",
+			"status": "DONE"
+		}
+	]
+}
