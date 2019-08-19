@@ -31,6 +31,11 @@ informations:
       currentEpisode: 20
       animePage: https://www9.gogoanime.io/kimetsu-no-yaiba-episode-
       dayOfWeekRelease: SUN
+    - name: Gegege-no-kitarou
+      maxEpisode: 10000
+      currentEpisode: 2
+      animePage: https://www9.gogoanime.io/gegege-no-kitarou-2018-episode-
+      dayOfWeekRelease: NONE
     - name: Dr-stone
       maxEpisode: 26
       currentEpisode: 7

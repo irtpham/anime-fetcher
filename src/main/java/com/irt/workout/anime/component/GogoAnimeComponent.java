@@ -31,7 +31,7 @@ public class GogoAnimeComponent implements VideoComponent {
     @Value("${currentEpisodeJsonFile}")
     private String currentEpisodeJsonFile;
 
-    @Value("${dayOfWeek}")
+    @Value("${dayOfWeek:NO}")
     String dayOfWeek;
 
     public boolean getEpisode(String animePage, String episodePath) {
@@ -70,7 +70,7 @@ public class GogoAnimeComponent implements VideoComponent {
         int currentEpisode;
         for (Anime anime : processAnimes) {
             LOG.debug("Gogoanime processing the episode {}", anime);
-            if (anime.getMaxEpisode() == currentEpisodeMap.get(anime.getName())) {
+            if (currentEpisodeMap.get(anime.getName()) > anime.getMaxEpisode()) {
                 LOG.info("The anime {} was completed. Nothing to do.", anime.getName());
                 continue;
             }
@@ -92,7 +92,7 @@ public class GogoAnimeComponent implements VideoComponent {
     }
 
     private String getShortNameDayOfWeekNow() {
-        return dayOfWeek == null ?
+        return dayOfWeek == "NO" ?
                 LocalDate.now().getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.ENGLISH).toUpperCase() : dayOfWeek;
     }
 }
