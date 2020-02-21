@@ -8,46 +8,4 @@ logging:
     file: "%d %-5level [%thread] %logger : %msg%n"
 
 localPath: D:\\films\\anime
-currentEpisodeJsonFile: D:\\films\\anime\\current-episode.json
-informations:
-  animes:
-    - name: Black-clover
-      maxEpisode: 10000
-      currentEpisode: 96
-      animePage: https://www9.gogoanime.io/black-clover-tv-episode-
-      dayOfWeekRelease: TUE
-    - name: One-piece
-      maxEpisode: 10000
-      currentEpisode: 898
-      animePage: https://www9.gogoanime.io/one-piece-episode-
-      dayOfWeekRelease: SUN
-    - name: Fairy-tail
-      maxEpisode: 51
-      currentEpisode: 45
-      animePage: https://www9.gogoanime.io/fairy-tail-final-series-episode-
-      dayOfWeekRelease: SUN
-    - name: Kimetsu-no-Yaiba
-      maxEpisode: 26
-      currentEpisode: 20
-      animePage: https://www9.gogoanime.io/kimetsu-no-yaiba-episode-
-      dayOfWeekRelease: SUN
-    - name: Gegege-no-kitarou
-      maxEpisode: 10000
-      currentEpisode: 2
-      animePage: https://www9.gogoanime.io/gegege-no-kitarou-2018-episode-
-      dayOfWeekRelease: NONE
-    - name: Dr-stone
-      maxEpisode: 26
-      currentEpisode: 7
-      animePage: https://www9.gogoanime.io/dr-stone-episode-
-      dayOfWeekRelease: SAT
-    - name: Enen-no-Shouboutai
-      maxEpisode: 24
-      currentEpisode: 6
-      animePage: https://www9.gogoanime.io/enen-no-shouboutai-episode-
-      dayOfWeekRelease: SAT
-    - name: Karakai-Jouzu-no-Takagi-san
-      maxEpisode: 12
-      currentEpisode: 10
-      animePage: https://www9.gogoanime.io/karakai-jouzu-no-takagi-san-episode-
-      dayOfWeekRelease: NONE
+animeInfoFilePath: D:\\films\\anime\\anime-fetcher\\anime-info.json

@@ -16,11 +16,11 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
 import java.nio.channels.ReadableByteChannel;
-import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * https://www.baeldung.com/java-download-file
@@ -30,23 +30,28 @@ import java.util.stream.Collectors;
  */
 
 public class FileUtils {
-    public static Logger LOG = LoggerFactory.getLogger(FileUtils.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FileUtils.class);
+
+    private FileUtils() {
+        throw new IllegalStateException("FileUtils is utility class");
+    }
+
     public static boolean saveTo(String fromUrlStr, String toLocalPath) {
-        try (ReadableByteChannel readableChannel = Channels.newChannel(getStreamData(fromUrlStr));
+        try (ReadableByteChannel readableChannel = Channels.newChannel(Objects.requireNonNull(getStreamData(fromUrlStr)));
              FileOutputStream fileOutput = new FileOutputStream(toLocalPath);
              FileChannel fChannel = fileOutput.getChannel())
         {
             fChannel.transferFrom(readableChannel, 0, Long.MAX_VALUE);
             return true;
-        } catch (IOException e) {
-            LOG.error("FileUtils got the error while create chanel.", e);
+        } catch (Exception e) {
+            LOG.error("FileUtils got the error while create chanel: {}", e.getMessage());
         }
         return false;
     }
 
     public static InputStream getStreamData(String urlStr) {
         if (urlStr == null) {
-            LOG.warn("FileUtils tries getting stream data from null URL.");
+            LOG.warn("Cannot get stream data from null URL.");
             return null;
         }
 
@@ -59,7 +64,7 @@ public class FileUtils {
         }
         catch (MalformedURLException e) {
             LOG.error(String.format("FileUtils got the error while init the URL %s.", urlStr), e);
-        } catch (IOException e) {
+        } catch (Exception e) {
             LOG.error(String.format("FileUtils got the error while open connection to url %s.", urlStr), e);
         }
 
@@ -70,39 +75,25 @@ public class FileUtils {
         return String.format("%s%s%s.mp4", localPath, File.separator, fileName);
     }
 
-    public static void createEpisodeJsonFile(String path, List<Anime> animes) {
+    public static void createAnimeInfoJsonFile(String path, List<Anime> animes) {
         try (FileWriter fWriter = new FileWriter(path)){
-            String currentEpisodeJson = animes.stream().map(Anime::toCurrentEpisodeJson)
+            String animeJsonFile = animes.stream()
+                    .map(Anime::toAnimeInfoJson)
                     .collect(Collectors.joining("," + System.lineSeparator(),"[" + System.lineSeparator(), System.lineSeparator() + "]"));
-            fWriter.write(currentEpisodeJson);
+            fWriter.write(animeJsonFile);
         } catch (IOException e) {
-            LOG.error("FileUtils cannot create current episode json file.", e);
+            LOG.error("FileUtils cannot create anime information file.", e);
         }
     }
 
-    public static void updateCurrentEpisodeJsonFile(String path, List<Anime> animes, Map<String, Integer> currentEpisodes) {
-        String backupFilePath = path + ".bk";
-        Paths.get(path).toFile().renameTo(new File(backupFilePath));
-
-        for (int i = 0; i < animes.size(); i++) {
-            Anime animeInfo = animes.get(i);
-            int currentEpisodeValue = currentEpisodes.get(animeInfo.getName()) == null ? animeInfo.getCurrentEpisode() : currentEpisodes.get(animeInfo.getName());
-            animeInfo.setCurrentEpisode(currentEpisodeValue);
-        }
-        createEpisodeJsonFile(path, animes);
-    }
-
-    public static Map<String, Integer> loadCurrentEpisodeFromJsonFile(String path) {
-        Map<String, Integer> result = new HashMap<>();
+    public static List<Anime> loadAnimeInfoFromJsonFile(String path) {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            Anime[]animes = mapper.readValue(new File(path), Anime[].class);
-            for (Anime anime : animes) {
-                result.put(anime.getName(), anime.getCurrentEpisode());
-            }
+            return Stream.of(mapper.readValue(new File(path), Anime[].class))
+                    .collect(Collectors.toList());
         } catch (IOException e) {
             LOG.error("FileUtils got error while load data from json file.", e);
         }
-        return result;
+        return Collections.emptyList();
     }
 }

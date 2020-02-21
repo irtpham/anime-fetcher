@@ -6,7 +6,6 @@ public class Anime {
     private int currentEpisode;
     private String animePage;
     private String dayOfWeekRelease;
-    private String status;
 
     public Anime() { this.currentEpisode = 0; }
 
@@ -50,20 +49,18 @@ public class Anime {
         this.dayOfWeekRelease = dayOfWeekRelease;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String toString() {
-        return String.format("Anime={name:%s, max-episode:%d, current-episode:%d, base-link:%s, release:%s, status:%s}",
-                name, maxEpisode, currentEpisode, animePage, dayOfWeekRelease, status);
+        return String.format("{\"name\":\"%s\", \"maxEpisode\":%d, \"currentEpisode\":%d, \"animePage\":\"%s\", \"dayOfWeekRelease\":\"%s\"}",
+                name, maxEpisode, currentEpisode, animePage, dayOfWeekRelease);
     }
 
-    public String toCurrentEpisodeJson() {
-        return String.format("{\"name\":\"%s\", \"currentEpisode\":%s}", name, currentEpisode);
+    public String toAnimeInfoJson() {
+        return String.format("\t{" +
+                "\n\t\t\"name\":\"%s\"," +
+                "\n\t\t\"maxEpisode\":%d," +
+                "\n\t\t\"currentEpisode\":%d," +
+                "\n\t\t\"animePage\":\"%s\"," +
+                "\n\t\t\"dayOfWeekRelease\":\"%s\"" +
+                "\n\t}", name, maxEpisode, currentEpisode, animePage, dayOfWeekRelease);
     }
 }
